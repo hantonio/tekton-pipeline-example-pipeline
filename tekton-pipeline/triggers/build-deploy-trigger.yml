@@ -69,7 +69,7 @@ spec:
   params:
   - name: git-app-repo-url
     # Replace with path to the JSON resource you want, based on the Git provider that you're using (e.g. for AzureDevOps: resource.repository.remoteUrl)
-    value: $(body.<json_resource_repo_url_path>)
+    value: $(body.repository.url)
   - name: git-app-repo-revision
     value: master
 
@@ -88,11 +88,26 @@ spec:
       name: tekton-argocd-example-build-tt
 
 ---
-
-apiVersion: getambassador.io/v2
-kind: Mapping
+apiVersion: extensions/v1beta1
+kind: Ingress
 metadata:
   name: tekton-argocd-example-build-el-mapping
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.frontend.rule.type: PathPrefixStrip
 spec:
-  prefix: /tekton-argocd-example-build-mapping/
-  service: el-tekton-argocd-example-build-el:8080
+  rules:
+  - http:
+      paths:
+      - path: /tekton-argocd-example-build-mapping/
+        backend:
+          serviceName: el-tekton-argocd-example-build-el
+          servicePort: 8080
+
+#apiVersion: getambassador.io/v2
+#kind: Mapping
+#metadata:
+#  name: tekton-argocd-example-build-el-mapping
+#spec:
+#  prefix: /tekton-argocd-example-build-mapping/
+#  service: el-tekton-argocd-example-build-el:8080
