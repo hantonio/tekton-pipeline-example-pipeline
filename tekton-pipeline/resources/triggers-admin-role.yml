@@ -7,11 +7,15 @@ rules:
 - apiGroups:
   - triggers.tekton.dev
   resources:
+  - triggers
   - eventlisteners
   - triggerbindings
   - triggertemplates
+  - clustertriggerbindings
   verbs:
   - get
+  - list
+  - watch
 - apiGroups:
   - tekton.dev
   resources:
