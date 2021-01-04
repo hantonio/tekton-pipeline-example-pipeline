@@ -1,4 +1,4 @@
-apiVersion: tekton.dev/v1alpha1
+apiVersion: triggers.tekton.dev/v1alpha1
 kind: TriggerTemplate
 metadata:
   name: tekton-argocd-example-build-tt
@@ -37,7 +37,7 @@ spec:
       params:
       - name: url
         # Replace <docker_registry_name> with your docker registry name (e.g. my-acr.azurecr.io)
-        value: '<docker_registry_name>'
+        value: megatron42.icarotech.com:5000
       type: image
   - apiVersion: tekton.dev/v1alpha1
     kind: PipelineRun
@@ -61,7 +61,7 @@ spec:
 
 --- 
 
-apiVersion: tekton.dev/v1alpha1
+apiVersion: triggers.tekton.dev/v1alpha1
 kind: TriggerBinding
 metadata:
   name: tekton-argocd-example-build-git-tb
@@ -75,7 +75,7 @@ spec:
 
 ---
 
-apiVersion: tekton.dev/v1alpha1
+apiVersion: triggers.tekton.dev/v1alpha1
 kind: EventListener
 metadata:
   name: tekton-argocd-example-build-el
