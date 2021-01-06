@@ -24,3 +24,17 @@ secretGenerator:
 - behavior: merge
   name: argocd-env-secret
   env: secrets/argocd_secrets.env
+
+configMapGenerator:
+- name: argocd-env-configmap
+  files:
+  - properties/argocd.properties
+- name: build-task-configmap
+  files:
+  - properties/build-task.properties
+generatorOptions:
+  disableNameSuffixHash: true
+  labels:
+    type: generated
+  annotations:
+    note: generated    
