@@ -36,4 +36,4 @@ spec:
         - --dockerfile=$(params.pathToContext)/$(params.pathToDockerFile)
         - --destination=$(resources.outputs.image-registry.url)/$(DOCKER_NAMESPACE)/$(DOCKER_IMAGE_NAME):$(DOCKER_TAG)
         - --context=$(params.pathToContext)
-        - --insecure
+        - --insecure # needed since the Docker Registry is running in HTTP not HTTPS

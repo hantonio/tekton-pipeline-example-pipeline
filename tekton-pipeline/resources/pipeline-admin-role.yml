@@ -29,4 +29,3 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: pipeline-sa
-  namespace: tekton-argocd-example

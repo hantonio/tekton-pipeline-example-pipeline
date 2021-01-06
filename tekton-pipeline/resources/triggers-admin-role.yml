@@ -46,7 +46,6 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: tekton-triggers-admin
-    namespace: tekton-argocd-example
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
